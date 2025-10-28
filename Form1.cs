@@ -76,6 +76,9 @@ namespace SnakeGame
             base.OnPaint(e);
             Graphics g = e.Graphics;
 
+            Pen borderPen = new Pen(Color.Gray, 2);
+            g.DrawRectangle(borderPen, 0, 0, 20 * 20, 20 * 20);
+
             Brush brush = Brushes.Lime;
             foreach (Point p in snake.Body)
             {
