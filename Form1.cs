@@ -120,8 +120,12 @@ namespace SnakeGame
         private void SpawnFood(Food f)
         {
             int x, y;
-            x = random.Next(0, 20);
-            y = random.Next(0, 20);
+            do
+            {
+                x = random.Next(0, 20);
+                y = random.Next(0, 20);
+            }
+            while (snake.Body.Contains(new Point(x, y)));
             f.Pos = new Point(x, y);
         }
     }
