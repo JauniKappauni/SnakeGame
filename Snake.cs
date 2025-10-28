@@ -33,6 +33,10 @@ namespace SnakeGame
         }
         public void ChangeDirection(int x, int y)
         {
+            if(x == -DirX && y == -DirY)
+            {
+                return;
+            }
             DirX = x;
             DirY = y;
         }
