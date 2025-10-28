@@ -12,6 +12,7 @@ namespace SnakeGame
 {
     public partial class Form1 : Form
     {
+        Snake snake = new Snake(5, 5);
         public Form1()
         {
             InitializeComponent();
@@ -29,6 +30,7 @@ namespace SnakeGame
         private void timer1_Tick(object sender, EventArgs e)
         {
             Invalidate();
+            snake.Move();
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -37,7 +39,10 @@ namespace SnakeGame
             Graphics g = e.Graphics;
 
             Brush brush = Brushes.Lime;
-            g.FillRectangle(brush, 100, 100, 20, 20);
+            foreach (Point p in snake.Body)
+            {
+                g.FillRectangle(brush, p.X * 20, p.Y * 20, 20, 20);
+            }
         }
     }
 }
