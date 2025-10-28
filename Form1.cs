@@ -52,7 +52,7 @@ namespace SnakeGame
             {
                 timer1.Stop();
                 MessageBox.Show("Game Over! Your score: " + score);
-                Close();
+                this.Close();
             }
             foreach (var f in foods)
             {
