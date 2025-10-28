@@ -79,6 +79,13 @@ namespace SnakeGame
             Pen borderPen = new Pen(Color.Gray, 2);
             g.DrawRectangle(borderPen, 0, 0, 20 * 20, 20 * 20);
 
+            Pen gridPen = new Pen(Color.FromArgb(40, 255, 255, 255));
+            for (int i = 0; i <= 20; i++)
+            {
+                g.DrawLine(gridPen, i * 20, 0, i * 20, 20 * 20);
+                g.DrawLine(gridPen, 0, i * 20, 20 * 20, i * 20);
+            }
+
             Brush brush = Brushes.Lime;
             foreach (Point p in snake.Body)
             {
