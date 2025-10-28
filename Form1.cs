@@ -16,6 +16,7 @@ namespace SnakeGame
         Random random = new Random();
         List<Food> foods = new List<Food>();
         private int score = 0;
+        private double acceleration = 0;
         public Form1()
         {
             InitializeComponent();
@@ -40,6 +41,7 @@ namespace SnakeGame
             foreach (var f in foods)
                 SpawnFood(f);
             label1.Text = "Score: 0";
+            label2.Text = "Acceleration (Time between execution): 0";
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -53,6 +55,11 @@ namespace SnakeGame
                     SpawnFood(f);
                     score += f.Value;
                     label1.Text = "Score: " + score;
+                    acceleration = 0.15 - (0.005 * (score / 5));
+                    acceleration = Math.Max(0.001, acceleration);
+                    timer1.Interval = timer1.Interval - (int)acceleration;
+                    label2.Text = "Acceleration (Time between execution): " + acceleration;
+
                 }
             }
             Invalidate();
