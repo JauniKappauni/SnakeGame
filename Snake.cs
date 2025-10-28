@@ -20,9 +20,11 @@ namespace SnakeGame
             DirX = 1;
             DirY = 0;
         }
-        void Move()
+        public void Move()
         {
-
+            Point abc = new Point(Body[0].X + DirX, Body[0].Y + DirY);
+            Body.Insert(0, abc);
+            Body.RemoveAt(Body.Count - 1);
         }
         void Grow()
         {
