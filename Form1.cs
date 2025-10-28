@@ -47,6 +47,12 @@ namespace SnakeGame
         private void timer1_Tick(object sender, EventArgs e)
         {
             snake.Move();
+            if (snake.IsCollision(20, 20))
+            {
+                timer1.Stop();
+                MessageBox.Show("Game Over! Your score: " + score);
+                Close();
+            }
             foreach (var f in foods)
             {
                 if (snake.Body[0] == f.Pos)
@@ -59,7 +65,7 @@ namespace SnakeGame
                     acceleration = Math.Max(0.001, acceleration);
                     timer1.Interval = timer1.Interval - (int)acceleration;
                     label2.Text = "Acceleration (Time between execution): " + acceleration;
-
+                    
                 }
             }
             Invalidate();

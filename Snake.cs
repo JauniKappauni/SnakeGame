@@ -36,8 +36,21 @@ namespace SnakeGame
             DirX = x;
             DirY = y;
         }
-        void IsCollision()
+        public bool IsCollision(int width, int height)
         {
+            Point head = Body[0];
+            if(head.X < 0 || head.Y < 0 || head.X >= width || head.Y >= height)
+            {
+                return true;
+            }
+            for(int i = 1; i < Body.Count; i++)
+            {
+                if ((Body[i] == head))
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }
