@@ -15,6 +15,7 @@ namespace SnakeGame
         Snake snake = new Snake(5, 5);
         Random random = new Random();
         List<Food> foods = new List<Food>();
+        private int score = 0;
         public Form1()
         {
             InitializeComponent();
@@ -38,7 +39,7 @@ namespace SnakeGame
 };
             foreach (var f in foods)
                 SpawnFood(f);
-
+            label1.Text = "Score: 0";
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -50,6 +51,8 @@ namespace SnakeGame
                 {
                     snake.Grow();
                     SpawnFood(f);
+                    score += f.Value;
+                    label1.Text = "Score: " + score;
                 }
             }
             Invalidate();
