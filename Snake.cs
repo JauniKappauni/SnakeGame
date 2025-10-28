@@ -28,7 +28,8 @@ namespace SnakeGame
         }
         public void Grow()
         {
-
+            Point tail = Body[Body.Count - 1];
+            Body.Add(new Point(tail.X, tail.Y));
         }
         public void ChangeDirection(int x, int y)
         {
