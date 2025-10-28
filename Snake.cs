@@ -26,7 +26,7 @@ namespace SnakeGame
             Body.Insert(0, abc);
             Body.RemoveAt(Body.Count - 1);
         }
-        void Grow()
+        public void Grow()
         {
 
         }

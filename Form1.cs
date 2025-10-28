@@ -43,8 +43,16 @@ namespace SnakeGame
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Invalidate();
             snake.Move();
+            foreach (var f in foods)
+            {
+                if (snake.Body[0] == f.Pos)
+                {
+                    snake.Grow();
+                    SpawnFood(f);
+                }
+            }
+            Invalidate();
         }
 
         protected override void OnPaint(PaintEventArgs e)
