@@ -16,5 +16,19 @@ namespace SnakeGame
         {
             InitializeComponent();
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.Text = "SnakeGame - GFS Software ";
+            this.BackColor = Color.Black;
+
+            timer1.Interval = 100;
+            timer1.Start();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
     }
 }
