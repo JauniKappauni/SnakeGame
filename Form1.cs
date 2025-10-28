@@ -28,7 +28,16 @@ namespace SnakeGame
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            Invalidate();
+        }
 
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+            Graphics g = e.Graphics;
+
+            Brush brush = Brushes.Lime;
+            g.FillRectangle(brush, 100, 100, 20, 20);
         }
     }
 }
