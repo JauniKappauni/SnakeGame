@@ -25,6 +25,8 @@ namespace SnakeGame
 
             timer1.Interval = 100;
             timer1.Start();
+            this.KeyDown += Form1_KeyDown;
+            this.KeyPreview = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -44,5 +46,25 @@ namespace SnakeGame
                 g.FillRectangle(brush, p.X * 20, p.Y * 20, 20, 20);
             }
         }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.W:
+                    snake.ChangeDirection(0, -1);
+                    break;
+                case Keys.S:
+                    snake.ChangeDirection(0, 1);
+                    break;
+                case Keys.A:
+                    snake.ChangeDirection(-1, 0);
+                    break;
+                case Keys.D:
+                    snake.ChangeDirection(1, 0);
+                    break;
+            }
+        }
+
     }
 }

@@ -30,8 +30,10 @@ namespace SnakeGame
         {
 
         }
-        void ChangeDirection()
+        public void ChangeDirection(int x, int y)
         {
+            DirX = x;
+            DirY = y;
         }
         void IsCollision()
         {
