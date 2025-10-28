@@ -13,6 +13,8 @@ namespace SnakeGame
     public partial class Form1 : Form
     {
         Snake snake = new Snake(5, 5);
+        Random random = new Random();
+        List<Food> foods = new List<Food>();
         public Form1()
         {
             InitializeComponent();
@@ -27,6 +29,16 @@ namespace SnakeGame
             timer1.Start();
             this.KeyDown += Form1_KeyDown;
             this.KeyPreview = true;
+            foods = new List<Food>()
+{
+            new Food(0, 0, 1, Brushes.Red),
+            new Food(0, 0, 2, Brushes.Green),
+            new Food(0, 0, 3, Brushes.Blue),
+            new Food(0, 0, 4, Brushes.White)
+};
+            foreach (var f in foods)
+                SpawnFood(f);
+
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -44,6 +56,10 @@ namespace SnakeGame
             foreach (Point p in snake.Body)
             {
                 g.FillRectangle(brush, p.X * 20, p.Y * 20, 20, 20);
+            }
+            foreach (var f in foods)
+            {
+                g.FillRectangle(f.Color, f.Pos.X * 20, f.Pos.Y * 20, 20, 20);
             }
         }
 
@@ -66,5 +82,12 @@ namespace SnakeGame
             }
         }
 
+        private void SpawnFood(Food f)
+        {
+            int x, y;
+            x = random.Next(0, 20);
+            y = random.Next(0, 20);
+            f.Pos = new Point(x, y);
+        }
     }
 }
